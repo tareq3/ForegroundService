@@ -7,7 +7,12 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mti.foregroundservice">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -15,7 +20,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:launchMode="singleTop"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBgoHSMutka9IWkmzq9RSDVvt_rswGoxyc" />
+        <meta-data
+            android:name="com.google.android.awareness.API_KEY"
+            android:value="AIzaSyBgoHSMutka9IWkmzq9RSDVvt_rswGoxyc" />
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +41,15 @@
         </activity>
 
         <service android:name=".ExampleService"
+            android:enabled="true"
             />
+
+        <receiver android:name=".ExampleBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceStopped">
+
+        </receiver>
     </application>
 
 </manifest>

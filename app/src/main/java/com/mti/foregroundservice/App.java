@@ -24,12 +24,12 @@ public static final String CHANNEL_ID="testServiceChannel";
     }
 
     private void createNotificationChannel() {
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel serviceChannel=new NotificationChannel(
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
                     CHANNEL_ID, "Test Service Channel",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
-            NotificationManager manager =getSystemService(NotificationManager.class);
+            NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(serviceChannel);
         }
     }
